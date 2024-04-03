@@ -17,7 +17,7 @@ class Contact{
 	public:
 		Contact();
 		void contact(int nb, string first_name, string last_name, string nickname, string phone_number, string darkest_secret);
-		void printf_info();
+		void print_info();
 		string get_first();
 		string get_last();
 		string get_nick();

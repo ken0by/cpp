@@ -7,7 +7,7 @@ DEBUG	=	-g3 -fsanitize=address
 
 NAME	=	phonebook
 
-SRC	=	phonebook.cpp
+SRC	=	main.cpp phonebook.cpp contact.cpp
 SRC_DIR	=	src/
 
 OBJ_DIR	=	./obj/
