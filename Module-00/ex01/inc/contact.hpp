@@ -8,12 +8,12 @@ using namespace std;
 
 class Contact{
 	private:
-		int			nb;
-		string	first_name;
-		string	last_name;
-		string	nickname;
-		string	phone_number;
-		string	darkest_secret;
+		int nb;
+		string first_name;
+		string last_name;
+		string nickname;
+		string phone_number;
+		string darkest_secret;
 	public:
 		Contact();
 		void contact(int nb, string first_name, string last_name, string nickname, string phone_number, string darkest_secret);

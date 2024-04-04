@@ -10,8 +10,8 @@
 
 class Phonebook{
 	private:
-		Contact	contacts[MAX_CONTACTS];
-		int		nb_contact;
+		Contact contacts[MAX_CONTACTS];
+		int nb_contact;
 	public:
 		Phonebook();
 		void add();
