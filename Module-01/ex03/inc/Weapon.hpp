@@ -10,10 +10,9 @@ class Weapon{
 	private:
 		string type;
 	public:
-		Weapon();
-		~Weapon();
+		Weapon(string type);
 		const string getType();
-		void setType(const string getType());
+		void setType(string type);
 };
 
 #endif
