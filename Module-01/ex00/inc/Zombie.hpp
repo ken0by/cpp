@@ -12,8 +12,11 @@ class Zombie{
 	public:
 		Zombie();
 		~Zombie();
-		void announce( void );
-		Zombie* newZombie(string name);
-}
+		Zombie(string name) : name(name) {}
+		void randomChump(string name);
+		void announce(void){
+			cout << name << ": BraiiiiiiinnnzzzZ..." << endl;
+		}
+};
 
 #endif

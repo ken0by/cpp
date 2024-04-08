@@ -17,6 +17,7 @@ int	isNumber(string phone){
 
 void Phonebook::add(){
 	string name, last_name, nickname, phone, dark;
+	Contact new_contact;
 
 	cout << "Add contact information" << endl;
 	cout << "First name: ";
@@ -35,7 +36,6 @@ void Phonebook::add(){
 	}
 	cout << "Darkest secret: ";
 	cin >> dark;
-	Contact new_contact;
 	if (nb_contact < MAX_CONTACTS){
 		new_contact.contact(nb_contact, name, last_name, nickname, phone, dark);
 		contacts[nb_contact] = new_contact;
@@ -48,6 +48,9 @@ void Phonebook::add(){
 }
 
 void Phonebook::print_Phonebook(){
+	string index_nbr;
+	int nb;
+
 	if (contacts[0].get_first() == ""){
 		cout << "There are no contacts." << endl;
 		return ;
@@ -71,8 +74,6 @@ void Phonebook::print_Phonebook(){
 		<< setw(10) << right << lname << "|" << setw(10) << right << nname << "|" << endl;
 		cout << "---------------------------------------------" << endl;
 	}
-	string index_nbr;
-	int nb;
 	while (true){
 		cout << "Enter index number: ";
 		cin >> index_nbr;

@@ -1,5 +1,10 @@
 #include "../inc/Zombie.hpp"
 
-void randomChump(string name ){
+Zombie* newZombie(string name);
 
+void randomChump(string name){
+	Zombie *zombie;
+	zombie = newZombie(name);
+	zombie->announce();
+	delete zombie;
 }
