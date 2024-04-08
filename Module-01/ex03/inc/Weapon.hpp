@@ -11,7 +11,7 @@ class Weapon{
 		string type;
 	public:
 		Weapon(string type) : type(type){}
-		const string getType();
+		const string& getType();
 		void setType(string type);
 };
 
