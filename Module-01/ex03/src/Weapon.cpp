@@ -4,6 +4,10 @@ Weapon::Weapon(){}
 
 Weapon::~Weapon(){}
 
-const string getType(){}
+const string getType(){
+    return this->type;
+}
 
-void setType(const string getType()){}
+void setType(string type){
+    this->type = type;
+}
