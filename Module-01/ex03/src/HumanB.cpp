@@ -1,9 +1,9 @@
 #include "../inc/HumanB.hpp"
 
-HumanB::HumanB(string name, string weapon){}
+void HumanB::attack(){
+	cout << this->name << " attacks with their " << this->weapon->getType() << endl;
+}
 
-HumanB::~HumanB(){}
-
-void attack(){}
-
-void setWeapon(Weapon club){}
+void HumanB::setWeapon(Weapon &type){
+	this->weapon = &type;
+}

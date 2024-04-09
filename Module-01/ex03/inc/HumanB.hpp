@@ -10,12 +10,11 @@ using namespace std;
 class HumanB{
 	private:
 		string name;
-		string weapon;
+		Weapon *weapon;
 	public:
-		HumanB(string name, string weapon);
-		~HumanB();
+		HumanB(string name) : name(name){}
 		void attack();
-		void setWeapon(Weapon club);
+		void setWeapon(Weapon &type);
 };
 
 #endif

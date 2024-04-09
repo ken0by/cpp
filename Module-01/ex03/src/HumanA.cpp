@@ -1,7 +1,5 @@
 #include "../inc/HumanA.hpp"
 
-HumanA::HumanA(string name, string weapon){}
-
-HumanA::~HumanA(){}
-
-void attack(){}
+void HumanA::attack(){
+	cout << this->name << " attacks with their " << this->weapon.getType() << endl;
+}

@@ -3,16 +3,16 @@
 # include <iostream>
 # include <string>
 # include <cstdlib>
+# include "Weapon.hpp"
 
 using namespace std;
 
 class HumanA{
 	private:
 		string name;
-		string weapon;
+		Weapon &weapon;
 	public:
-		HumanA(string name, string weapon);
-		~HumanA();
+		HumanA(string name, Weapon &weapon) : name(name), weapon(weapon){}
 		void attack();
 };
 
