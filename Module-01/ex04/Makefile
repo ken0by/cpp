@@ -5,9 +5,9 @@ CC	=	g++
 CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -I ./inc
 DEBUG	=	-g3 -fsanitize=address
 
-NAME	=	unnecessaryViolence
+NAME	=	sedisforloser
 
-SRC	=	main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+SRC	=	main.cpp
 SRC_DIR	=	src/
 
 OBJ_DIR	=	./obj/
