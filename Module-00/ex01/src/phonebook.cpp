@@ -33,7 +33,7 @@ void Phonebook::add(){
 			break ;
 	}
 	std::cout << "Darkest secret: ";
-	std::cin >> dark;
+	std::getline(std::cin >> std::ws, dark);
 	if (nb_contact < MAX_CONTACTS){
 		new_contact.contact(nb_contact, name, last_name, nickname, phone, dark);
 		contacts[nb_contact] = new_contact;

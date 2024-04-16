@@ -1,10 +1,10 @@
 #include "../inc/ClapTrap.hpp"
 
-ClapTrap::ClapTrap(): name("Default"), health(10), energy(10), attack_points(0){
+ClapTrap::ClapTrap(): name("Default"), health(100), energy(100), attack_points(30){
 	std::cout << "ClapTrap Default constractor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name): name(name), health(10), energy(10), attack_points(0){
+ClapTrap::ClapTrap(std::string name): name(name), health(100), energy(100), attack_points(30){
 	std::cout << "ClapTrap " << name << " constractor called" << std::endl;
 }
 
@@ -40,12 +40,12 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other){
 
 void ClapTrap::attack(const std::string& target){
 	if (this->health <= 0){
-		std::cout << this->name << " can't attack " << target << ", is dead!" << std::endl;
+		std::cout << "ClapTrap " << this->name << " can't attack " << target << ", is dead!" << std::endl;
 		return ;
 	}
 
 	if (this->energy <= 0){
-		std::cout << this->name << " can't attack " << target << ", don't have energy!" << std::endl;
+		std::cout << "ClapTrap " << this->name << " can't attack " << target << ", don't have energy!" << std::endl;
 		return ;
 	}
 
@@ -55,7 +55,7 @@ void ClapTrap::attack(const std::string& target){
 
 void ClapTrap::takeDamage(unsigned int amount){
 	if (this->health <= 0){
-		std::cout << this->name << " is dead!" << std::endl;
+		std::cout << "ClapTrap " << this->name << " is dead!" << std::endl;
 		return ;
 	}
 
@@ -65,12 +65,12 @@ void ClapTrap::takeDamage(unsigned int amount){
 
 void ClapTrap::beRepaired(unsigned int amount){
 	if (this->health <= 0){
-		std::cout << this->name << " can't repaired, is dead!" << std::endl;
+		std::cout << "ClapTrap " << this->name << " can't repaired, is dead!" << std::endl;
 		return ;
 	}
 
 	if (this->energy <= 0){
-		std::cout << this->name << " can't repaired, don't have energy!" << std::endl;
+		std::cout << "ClapTrap " << this->name << " can't repaired, don't have energy!" << std::endl;
 		return ;
 	}
 
@@ -79,5 +79,5 @@ void ClapTrap::beRepaired(unsigned int amount){
 }
 
 ClapTrap::~ClapTrap(){
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap destructor called" << std::endl;
 }
