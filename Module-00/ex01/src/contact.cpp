@@ -2,7 +2,7 @@
 
 Contact::Contact(){}
 
-void Contact::contact(int nb, string name, string lname, string nick, string phone, string dark){
+void Contact::contact(int nb, std::string name, std::string lname, std::string nick, std::string phone, std::string dark){
 	this->nb = nb;
 	this->first_name = name;
 	this->last_name = lname;
@@ -12,25 +12,25 @@ void Contact::contact(int nb, string name, string lname, string nick, string pho
 }
 
 void Contact::print_info(){
-	cout << "First name: " << first_name << endl;
-	cout << "Last name: " << last_name << endl;
-	cout << "Nickname: " << nickname << endl;
-	cout << "Phone number: " << phone_number << endl;
-	cout << "Darkest secret: " << darkest_secret << endl;
+	std::cout << "First name: " << first_name << std::endl;
+	std::cout << "Last name: " << last_name << std::endl;
+	std::cout << "Nickname: " << nickname << std::endl;
+	std::cout << "Phone number: " << phone_number << std::endl;
+	std::cout << "Darkest secret: " << darkest_secret << std::endl;
 }
 
-string Contact::get_first(){
+std::string Contact::get_first(){
 	return this->first_name;
 }
 
-string Contact::get_last(){
+std::string Contact::get_last(){
 	return this->last_name;
 }
 
-string Contact::get_nick(){
+std::string Contact::get_nick(){
 	return this->nickname;
 }
 
-string Contact::get_phone(){
+std::string Contact::get_phone(){
 	return this->phone_number;
 }

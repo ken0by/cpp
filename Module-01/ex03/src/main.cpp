@@ -1,7 +1,6 @@
 #include "../inc/HumanA.hpp"
 #include "../inc/HumanB.hpp"
 #include "../inc/Weapon.hpp"
-#include <cstdlib>
 
 int main()
 {

@@ -3,11 +3,11 @@
 
 class Zombie;
 
-Zombie* zombieHorde(int N, string name);
+Zombie* zombieHorde(int N, std::string name);
 
 int main(){
 	int N = 10;
-	string name = "Puto";
+	std::string name = "Puto";
 	Zombie* horde = zombieHorde(N, name);
 	for (int i = 0; i < N ; ++i){
 		horde[i].announce();

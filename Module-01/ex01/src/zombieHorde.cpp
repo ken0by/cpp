@@ -1,6 +1,6 @@
 #include "../inc/Zombie.hpp"
 
-Zombie* zombieHorde(int N, string name){
+Zombie* zombieHorde(int N, std::string name){
 	//Alojar memoria xa N zombies
 	Zombie* horde = new Zombie[N];
 

@@ -54,8 +54,8 @@ void Phonebook::print_Phonebook(){
 		return ;
 	}
 	std::cout << "---------------------------------------------" << std::endl;
-	std::cout << "|" << setw(10) << right << "Index" << "|" << setw(10) << right << "Name" << "|"
-		<< setw(10) << right << "Lastname" << "|" << setw(10) << right << "Nickname" << "|" << std::endl;
+	std::cout << "|" << std::setw(10) << std::right << "Index" << "|" << std::setw(10) << std::right << "Name" << "|"
+		<< std::setw(10) << std::right << "Lastname" << "|" << std::setw(10) << std::right << "Nickname" << "|" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
 	for (int i = 0; i < nb_contact; ++i){
 		std::string fname = contacts[i].get_first();
@@ -68,8 +68,8 @@ void Phonebook::print_Phonebook(){
 			lname =lname.substr(0, 9) + ".";
 		if (nname.length() > 10)
 			nname = nname.substr(0, 9) + ".";
-		std::cout << "|" << setw(10) << right << i << "|" << setw(10) << right << fname << "|"
-		<< setw(10) << right << lname << "|" << setw(10) << right << nname << "|" << std::endl;
+		std::cout << "|" << std::setw(10) << std::right << i << "|" << std::setw(10) << std::right << fname << "|"
+		<< std::setw(10) << std::right << lname << "|" << std::setw(10) << std::right << nname << "|" << std::endl;
 		std::cout << "---------------------------------------------" << std::endl;
 	}
 	while (true){

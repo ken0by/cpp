@@ -1,6 +1,6 @@
 #include "../inc/Harl.hpp"
 
-int main(){
+int main(void){
 	Harl Steve;
 	Steve.complain("DEBUG");
 	Steve.complain("WARNING");

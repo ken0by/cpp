@@ -4,22 +4,20 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class Zombie{
 	private:
-		string name;
+		std::string name;
 	public:
 		//Constructor
 		Zombie();
 		//Destructor
 		~Zombie();
-		void setName(string newName){
+		void setName(std::string newName){
 			name = newName;
 		}
-		Zombie* zombieHorde(int N, string name);
+		Zombie* zombieHorde(int N, std::string name);
 		void announce(void){
-			cout << name << ": BraiiiiiiinnnzzzZ..." << endl;
+			std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 		}
 };
 

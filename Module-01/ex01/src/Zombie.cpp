@@ -3,5 +3,5 @@
 Zombie::Zombie(){}
 
 Zombie::~Zombie(){
-	cout << this->name << ": has been destroyed..." << endl;
+	std::cout << this->name << ": has been destroyed..." << std::endl;
 }
