@@ -1,32 +1,31 @@
 #include "../inc/contact.hpp"
 #include "../inc/phonebook.hpp"
 
-using namespace std;
 
 int main(){
 	Phonebook phonebook;
 	string cmd;
 
 	while (true) {
-		cout << "Enter one command (ADD, SEARCH , EXIT): ";
-		cin >> cmd;
+		std::cout << "Enter one command (ADD, SEARCH , EXIT): ";
+		std::cin >> cmd;
 
-		if (cin.eof()){
-			cout << "Ctrl-D detected. Exiting..." << endl;
+		if (std::cin.eof()){
+			std::cout << "Ctrl-D detected. Exiting..." << std::endl;
 			break ;
 		}
 
 		if (cmd == "ADD"){
 			phonebook.add();
-			cout << endl;
+			std::cout << std::endl;
 		} else if (cmd == "SEARCH") {
 			phonebook.print_Phonebook();
-			cout << endl;
+			std::cout << std::endl;
 		} else if (cmd == "EXIT") {
-			cout << "Exiting..." << endl;
+			std::cout << "Exiting..." << std::endl;
 			break ;
 		} else {
-			cout << "Invalid command. Try again" << endl;
+			std::cout << "Invalid command. Try again" << std::endl;
 		}
 	}
 	return (0);

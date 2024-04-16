@@ -2,22 +2,22 @@
 
 Fixed::Fixed(){
 	this->nb = 0;
-	cout << "Default constractor called" << endl;
+	std::cout << "Default constractor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& other){
-	cout << "Copy constractor called" << endl;
+	std::cout << "Copy constractor called" << std::endl;
 	*this = other;
 }
 
 Fixed& Fixed::operator=(const Fixed &other){
-	cout << "Copy assignment operator called" << endl;
+	std::cout << "Copy assignment operator called" << std::endl;
 	setRawBits(other.getRawBits());
 	return *this;
 }
 
 int Fixed::getRawBits(void) const{
-	cout << "getRawBits member function called" << endl;
+	std::cout << "getRawBits member function called" << std::endl;
 	return this->nb;
 }
 
@@ -26,5 +26,5 @@ void Fixed::setRawBits(int const raw){
 }
 
 Fixed::~Fixed(){
-	cout << "Destructor called" << endl;
+	std::cout << "Destructor called" << std::endl;
 }

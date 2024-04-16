@@ -5,14 +5,12 @@
 # include <cstdlib>
 # include "Weapon.hpp"
 
-using namespace std;
-
 class HumanA{
 	private:
-		string name;
+		std::string name;
 		Weapon &weapon;
 	public:
-		HumanA(string name, Weapon &weapon) : name(name), weapon(weapon){}
+		HumanA(std::string name, Weapon &weapon) : name(name), weapon(weapon){}
 		void attack();
 };
 

@@ -1,12 +1,10 @@
 #include "../inc/phonebook.hpp"
 
-using namespace std;
-
 Phonebook::Phonebook(){
 	nb_contact = 0;
 }
 
-int	isNumber(string phone){
+int	isNumber(std::string phone){
 	for (size_t i = 0; i < phone.length(); ++i){
 		if  (!isdigit(phone[i])){
 			return false;
@@ -16,26 +14,26 @@ int	isNumber(string phone){
 }
 
 void Phonebook::add(){
-	string name, last_name, nickname, phone, dark;
+	std::string name, last_name, nickname, phone, dark;
 	Contact new_contact;
 
-	cout << "Add contact information" << endl;
-	cout << "First name: ";
-	cin >> name;
-	cout << "Last name: ";
-	cin >> last_name;
-	cout << "Nickname: ";
-	cin >> nickname;
+	std::cout << "Add contact information" << std::endl;
+	std::cout << "First name: ";
+	std::cin >> name;
+	std::cout << "Last name: ";
+	std::cin >> last_name;
+	std::cout << "Nickname: ";
+	std::cin >> nickname;
 	while (true){
-		cout << "Phone number: ";
-		cin >> phone;
+		std::cout << "Phone number: ";
+		std::cin >> phone;
 		if (!isNumber(phone))
-			cout << "Invalid format for the phone number. Try again" << endl;
+			std::cout << "Invalid format for the phone number. Try again" << std::endl;
 		else
 			break ;
 	}
-	cout << "Darkest secret: ";
-	cin >> dark;
+	std::cout << "Darkest secret: ";
+	std::cin >> dark;
 	if (nb_contact < MAX_CONTACTS){
 		new_contact.contact(nb_contact, name, last_name, nickname, phone, dark);
 		contacts[nb_contact] = new_contact;
@@ -44,25 +42,25 @@ void Phonebook::add(){
 		new_contact.contact(7, name, last_name, nickname, phone, dark);
 		contacts[7] = new_contact;
 	}
-	cout << "New contact added!" << endl;
+	std::cout << "New contact added!" << std::endl;
 }
 
 void Phonebook::print_Phonebook(){
-	string index_nbr;
+	std::string index_nbr;
 	int nb;
 
 	if (contacts[0].get_first() == ""){
-		cout << "There are no contacts." << endl;
+		std::cout << "There are no contacts." << std::endl;
 		return ;
 	}
-	cout << "---------------------------------------------" << endl;
-	cout << "|" << setw(10) << right << "Index" << "|" << setw(10) << right << "Name" << "|"
-		<< setw(10) << right << "Lastname" << "|" << setw(10) << right << "Nickname" << "|" << endl;
-	cout << "---------------------------------------------" << endl;
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << "|" << setw(10) << right << "Index" << "|" << setw(10) << right << "Name" << "|"
+		<< setw(10) << right << "Lastname" << "|" << setw(10) << right << "Nickname" << "|" << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
 	for (int i = 0; i < nb_contact; ++i){
-		string fname = contacts[i].get_first();
-		string lname = contacts[i].get_last();
-		string nname = contacts[i].get_nick();
+		std::string fname = contacts[i].get_first();
+		std::string lname = contacts[i].get_last();
+		std::string nname = contacts[i].get_nick();
 
 		if (fname.length() > 10)
 			fname = fname.substr(0, 9) + ".";
@@ -70,19 +68,19 @@ void Phonebook::print_Phonebook(){
 			lname =lname.substr(0, 9) + ".";
 		if (nname.length() > 10)
 			nname = nname.substr(0, 9) + ".";
-		cout << "|" << setw(10) << right << i << "|" << setw(10) << right << fname << "|"
-		<< setw(10) << right << lname << "|" << setw(10) << right << nname << "|" << endl;
-		cout << "---------------------------------------------" << endl;
+		std::cout << "|" << setw(10) << right << i << "|" << setw(10) << right << fname << "|"
+		<< setw(10) << right << lname << "|" << setw(10) << right << nname << "|" << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
 	}
 	while (true){
-		cout << "Enter index number: ";
-		cin >> index_nbr;
+		std::cout << "Enter index number: ";
+		std::cin >> index_nbr;
 		if (!isNumber(index_nbr))
-			cout << "Invalid entry! Please enter a valid number." << endl;
+			std::cout << "Invalid entry! Please enter a valid number." << std::endl;
 		else {
 			nb = atoi(index_nbr.c_str());
 			if (nb > MAX_CONTACTS || contacts[nb].get_first() == ""){
-				cout << "Invalid input! Please enter a valid number." << endl;
+				std::cout << "Invalid input! Please enter a valid number." << std::endl;
 			}
 			else
 				break ;

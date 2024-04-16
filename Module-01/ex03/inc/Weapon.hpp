@@ -4,15 +4,13 @@
 # include <string>
 # include <cstdlib>
 
-using namespace std;
-
 class Weapon{
 	private:
-		string type;
+		std::string type;
 	public:
-		Weapon(string type) : type(type){}
-		const string& getType();
-		void setType(string type);
+		Weapon(std::string type) : type(type){}
+		const std::string& getType();
+		void setType(std::string type);
 };
 
 #endif

@@ -5,14 +5,12 @@
 # include <string>
 # include <cstdlib>
 
-using namespace std;
-
 class HumanB{
 	private:
-		string name;
+		std::string name;
 		Weapon *weapon;
 	public:
-		HumanB(string name) : name(name){}
+		HumanB(std::string name) : name(name){}
 		void attack();
 		void setWeapon(Weapon &type);
 };

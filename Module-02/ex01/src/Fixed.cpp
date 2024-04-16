@@ -16,26 +16,26 @@ float ft_power(float value, int x){
 }
 
 Fixed::Fixed(){
-	cout << "Default constractor called" << endl;
+	std::cout << "Default constractor called" << std::endl;
 }
 
 Fixed::Fixed(const int i){
-	cout << "Int constractor called" << endl;
+	std::cout << "Int constractor called" << std::endl;
 	this->nb = i << this->bits;
 }
 
 Fixed::Fixed(const float x){
-	cout << "Float constractor called" << endl;
+	std::cout << "Float constractor called" << std::endl;
 	this->nb = roundf(x * ft_power(2, this->bits));
 }
 
 Fixed::Fixed(const Fixed& other){
-	cout << "Copy constractor called" << endl;
+	std::cout << "Copy constractor called" << std::endl;
 	*this = other;
 }
 
 Fixed& Fixed::operator = (const Fixed &other){
-	cout << "Copy assignment operator called" << endl;
+	std::cout << "Copy assignment operator called" << std::endl;
 	this->nb = other.getRawBits();
 	return *this;
 }
@@ -57,9 +57,9 @@ float Fixed::toFloat() const{
 }
 
 Fixed::~Fixed(){
-	cout << "Destructor called" << endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
-ostream& operator << (ostream& str, Fixed const &nb){
+std::ostream& operator << (std::ostream& str, Fixed const &nb){
 	return (str <<  nb.toFloat());
 }

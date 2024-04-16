@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv){
 	if (argc != 2){
-		cout << "Please enter a argument. DEBUG, INFO, WARNING, ERROR." << endl;
+		std::cout << "Please enter a argument. DEBUG, INFO, WARNING, ERROR." << std::endl;
 		return 0;
 	}
 	Harl Steve;

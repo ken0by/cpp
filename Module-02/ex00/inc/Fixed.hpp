@@ -5,8 +5,6 @@
 # include <string>
 # include <iomanip>
 
-using namespace std;
-
 class Fixed{
 	private:
 		int nb;

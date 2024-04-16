@@ -1,20 +1,18 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 int main(){
-	string str = "HI THIS IS BRAIN";
-	string* stringPTR = &str;
-	string& stringREF = str;
+	std::string str = "HI THIS IS BRAIN";
+	std::string* stringPTR = &str;
+	std::string& stringREF = str;
 
-	cout << "Memory address str: " << &str << endl;
-	cout << "Memory address stringPTR: " << stringPTR << endl;
-	cout << "Memory address stringREF: " << &stringREF << endl;
+	std::cout << "Memory address str: " << &str << std::endl;
+	std::cout << "Memory address stringPTR: " << stringPTR << std::endl;
+	std::cout << "Memory address stringREF: " << &stringREF << std::endl;
 
-	cout << "Value str: " << str << endl;
-	cout << "Value stringPTR: " << *stringPTR << endl;
-	cout << "Value stringREF: " << stringREF << endl;
+	std::cout << "Value str: " << str << std::endl;
+	std::cout << "Value stringPTR: " << *stringPTR << std::endl;
+	std::cout << "Value stringREF: " << stringREF << std::endl;
 
 	return 0;
 }

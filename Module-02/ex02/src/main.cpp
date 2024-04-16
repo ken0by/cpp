@@ -2,89 +2,89 @@
 
 void	big_tests(int value_of_b, float value_of_c)
 {
-	cout << "Initialisations" << endl;
-	cout << "Initialising a Fixed variable a." << endl;
+	std::cout << "Initialisations" << std::endl;
+	std::cout << "Initialising a Fixed variable a." << std::endl;
 	Fixed a;
-	cout << "Value of a is: " << a << endl;
+	std::cout << "Value of a is: " << a << std::endl;
 
-	cout << "Initialising a Fixed variable b with an int (" << value_of_b
-		<< ")." << endl;
+	std::cout << "Initialising a Fixed variable b with an int (" << value_of_b
+		<< ")." << std::endl;
 	const Fixed b(value_of_b);
-	cout << "Value of b is: " << b << endl;
+	std::cout << "Value of b is: " << b << std::endl;
 
-	cout << "Initialising a Fixed variable c with a float (" << value_of_c
-		<< ")" << endl;
+	std::cout << "Initialising a Fixed variable c with a float (" << value_of_c
+		<< ")" << std::endl;
 	const Fixed c(value_of_c);
-	cout << "Value of c is: " << c << endl;
+	std::cout << "Value of c is: " << c << std::endl;
 
-	cout << "Initialising a Fixed variable d with another Fixed variable (c)." << endl;
+	std::cout << "Initialising a Fixed variable d with another Fixed variable (c)." << std::endl;
 	Fixed d(c);
-	cout << "Value of d is: " << d << endl;
+	std::cout << "Value of d is: " << d << std::endl;
 
-	cout << "Using assignation operator (a = b)" << endl;
+	std::cout << "Using assignation operator (a = b)" << std::endl;
 	a = b;
-	cout << "Value of a is: " << a << endl << endl;
+	std::cout << "Value of a is: " << a << std::endl << std::endl;
 
-	cout << "Using comparison operators" << endl;
-	cout << "a < c is " << (a < c) << endl;
-	cout << "a < b is " << (a < b) << endl;
-	cout << "a > c is " << (a > c) << endl;
-	cout << "a > b is " << (a > b) << endl;
-	cout << "a <= c is " << (a <= c) << endl;
-	cout << "a <= b is " << (a <= b) << endl;
-	cout << "a >= c is " << (a >= c) << endl;
-	cout << "a >= b is " << (a >= b) << endl;
-	cout << "a == c is " << (a == c) << endl;
-	cout << "a == b is " << (a == b) << endl;
-	cout << "a != c is " << (a != c) << endl;
-	cout << "a != b is " << (a != b) << endl << endl;
+	std::cout << "Using comparison operators" << std::endl;
+	std::cout << "a < c is " << (a < c) << std::endl;
+	std::cout << "a < b is " << (a < b) << std::endl;
+	std::cout << "a > c is " << (a > c) << std::endl;
+	std::cout << "a > b is " << (a > b) << std::endl;
+	std::cout << "a <= c is " << (a <= c) << std::endl;
+	std::cout << "a <= b is " << (a <= b) << std::endl;
+	std::cout << "a >= c is " << (a >= c) << std::endl;
+	std::cout << "a >= b is " << (a >= b) << std::endl;
+	std::cout << "a == c is " << (a == c) << std::endl;
+	std::cout << "a == b is " << (a == b) << std::endl;
+	std::cout << "a != c is " << (a != c) << std::endl;
+	std::cout << "a != b is " << (a != b) << std::endl << std::endl;
 
-	cout << "Using binary operators" << endl;
-	cout << "c + a = " << (c + a) << endl;
-	cout << "c - a = " << (c - a) << endl;
-	cout << "c * a = " << (c * a) << endl;
-	cout << "c / a = " << (c / a) << endl << endl;
+	std::cout << "Using binary operators" << std::endl;
+	std::cout << "c + a = " << (c + a) << std::endl;
+	std::cout << "c - a = " << (c - a) << std::endl;
+	std::cout << "c * a = " << (c * a) << std::endl;
+	std::cout << "c / a = " << (c / a) << std::endl << std::endl;
 
-	cout << "Using unary operators" << endl;
-	cout << "a++ = " << a++ << endl;
-	cout << "Value of a is: " << a << endl;
-	cout << "++a = " << ++a << endl;
-	cout << "Value of a is: " << a << endl;
-	cout << "a-- = " << a-- << endl;
-	cout << "Value of a is: " << a << endl;
-	cout << "--a = " << --a << endl;
-	cout << "Value of a is: " << a << endl << endl;
+	std::cout << "Using unary operators" << std::endl;
+	std::cout << "a++ = " << a++ << std::endl;
+	std::cout << "Value of a is: " << a << std::endl;
+	std::cout << "++a = " << ++a << std::endl;
+	std::cout << "Value of a is: " << a << std::endl;
+	std::cout << "a-- = " << a-- << std::endl;
+	std::cout << "Value of a is: " << a << std::endl;
+	std::cout << "--a = " << --a << std::endl;
+	std::cout << "Value of a is: " << a << std::endl << std::endl;
 
-	cout << "Using other functions" << endl;
-	cout << "c.toInt() = " << c.toInt() << endl;
-	cout << "c.toFloat() = " << c.toFloat() << endl;
-	cout << "min(a, d) = " << Fixed::min(a, d) << endl;
-	cout << "min(b, c) = " << Fixed::min(b, c) << endl;
-	cout << "max(a, d) = " << Fixed::max(a, d) << endl;
-	cout << "max(b, c) = " << Fixed::max(b, c) << endl << endl;
+	std::cout << "Using other functions" << std::endl;
+	std::cout << "c.toInt() = " << c.toInt() << std::endl;
+	std::cout << "c.toFloat() = " << c.toFloat() << std::endl;
+	std::cout << "min(a, d) = " << Fixed::min(a, d) << std::endl;
+	std::cout << "min(b, c) = " << Fixed::min(b, c) << std::endl;
+	std::cout << "max(a, d) = " << Fixed::max(a, d) << std::endl;
+	std::cout << "max(b, c) = " << Fixed::max(b, c) << std::endl << std::endl;
 }
 
 void tests()
 {
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	cout << a << endl;
-	cout << ++a << endl;
-	cout << a << endl;
-	cout << a++ << endl;
-	cout << a << endl;
-	cout << b << endl;
-	cout << Fixed::max( a, b ) << endl;
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
 }
 
 int main( void )
 {
 	big_tests(14, 50.125f);
-	cout << endl;
-	cout << "-----------------------------------------" << endl;
-	cout << "Now same thing but with negative numbers:" << endl;
-	cout << "-----------------------------------------" << endl;
-	cout << endl;
+	std::cout << std::endl;
+	std::cout << "-----------------------------------------" << std::endl;
+	std::cout << "Now same thing but with negative numbers:" << std::endl;
+	std::cout << "-----------------------------------------" << std::endl;
+	std::cout << std::endl;
 	big_tests(-12, -80.175829380f);
 	// tests();
 }

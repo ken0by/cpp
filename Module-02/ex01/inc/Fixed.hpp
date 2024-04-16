@@ -6,8 +6,6 @@
 # include <iomanip>
 # include <cmath>
 
-using namespace std;
-
 class Fixed{
 	private:
 		int nb;
@@ -25,6 +23,6 @@ class Fixed{
 		~Fixed();
 };
 
-ostream& operator << (ostream& str, Fixed const &nb);
+std::ostream& operator << (std::ostream& str, Fixed const &nb);
 
 #endif

@@ -6,8 +6,6 @@
 # include <string>
 # include <cstdlib>
 
-using namespace std;
-
 class Harl{
 	private:
 		void debug(void);
@@ -17,7 +15,7 @@ class Harl{
 	public:
 		Harl();
 		~Harl();
-		void complain(string level);
+		void complain(std::string level);
 };
 
 #endif

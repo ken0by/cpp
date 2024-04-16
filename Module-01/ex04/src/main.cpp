@@ -2,35 +2,35 @@
 
 int main(int argc, char** argv) {
 	if (argc < 4) {
-		cerr << "Uso: " << argv[0] << " archivo s1 s2" << endl;
+		std::cerr << "Uso: " << argv[0] << " archivo s1 s2" << std::endl;
 		return 1;
 	}
 
-	string file = argv[1];
-	string s1 = argv[2];
-	string s2 = argv[3];
+	std::string file = argv[1];
+	std::string s1 = argv[2];
+	std::string s2 = argv[3];
 
-	ifstream infile(file);
+	std::ifstream infile(file);
 	if (!infile) {
-		cerr << "Error abriendo el archivo: " << file << endl;
+		std::cerr << "Error abriendo el archivo: " << file << std::endl;
 		return 1;
 	}
 
-	string out = file + ".replace";
-	ofstream outfile(out);
+	std::string out = file + ".replace";
+	std::ofstream outfile(out);
 	if (!outfile){
-		cerr << "Error creando el archivo de reemplazo: " << out << endl;
+		std::cerr << "Error creando el archivo de reemplazo: " << out << std::endl;
 		return 1;
 	}
 
-	string line;
-	while (getline(infile, line)) {
+	std::string line;
+	while (std::getline(infile, line)) {
 		size_t pos = 0;
-		while ((pos = line.find(s1, pos)) != string::npos) {
+		while ((pos = line.find(s1, pos)) != std::string::npos) {
 			line = line.substr(0, pos) + s2 + line.substr(pos + s1.length());
 			pos += s2.length();
 		}
-		outfile << line << endl;
+		outfile << line << std::endl;
 	}
 
 	infile.close();

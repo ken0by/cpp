@@ -4,18 +4,16 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class Zombie{
 	private:
-		string name;
+		std::string name;
 	public:
 		Zombie();
 		~Zombie();
-		Zombie(string name) : name(name) {}
-		void randomChump(string name);
+		Zombie(std::string name) : name(name) {}
+		void randomChump(std::string name);
 		void announce(void){
-			cout << name << ": BraiiiiiiinnnzzzZ..." << endl;
+			std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 		}
 };
 
