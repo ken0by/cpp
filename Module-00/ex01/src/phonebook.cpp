@@ -2,6 +2,7 @@
 
 Phonebook::Phonebook(){
 	nb_contact = 0;
+	last_contact = 0;
 }
 
 int	isNumber(std::string phone){
@@ -39,8 +40,12 @@ void Phonebook::add(){
 		contacts[nb_contact] = new_contact;
 		nb_contact++;
 	} else {
-		new_contact.contact(7, name, last_name, nickname, phone, dark);
-		contacts[7] = new_contact;
+		new_contact.contact(last_contact, name, last_name, nickname, phone, dark);
+		contacts[last_contact] = new_contact;
+		if (last_contact < MAX_CONTACTS)
+			last_contact += 1;
+		else
+			last_contact = 0;
 	}
 	std::cout << "New contact added!" << std::endl;
 }

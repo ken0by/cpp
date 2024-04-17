@@ -12,6 +12,7 @@ class Phonebook{
 	private:
 		Contact contacts[MAX_CONTACTS];
 		int nb_contact;
+		int last_contact;
 	public:
 		Phonebook();
 		void add();
