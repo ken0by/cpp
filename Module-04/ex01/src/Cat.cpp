@@ -1,16 +1,16 @@
 #include "../inc/Cat.hpp"
 
-Cat::Cat(){
+Cat::Cat() : Animal(){
 	std::cout << "Cat constructor called" << std::endl;
 	this->type = "Cat";
 	this->brain = new Brain();
 }
 
-Cat::Cat(const Cat &other) : Animal(other){
+Cat::Cat(const Cat &other){
 	std::cout << "Cat copy constructor called" << std::endl;
 	this->type = other.type;
 	this->brain = new Brain();
-	this->brain = other.brain;
+	*(this->brain) = Brain(*(other.brain));
 }
 
 Cat &Cat::operator=(const Cat &other){
@@ -40,6 +40,8 @@ void Cat::compare(const Cat &other){
 	std::cout << std::endl;
 	for (int i = 0; i < 100; i++)
 		std::cout << ((this->brain)->getIdeas())[i] << "\t\t\t | \t\t\t" << ((other.getBrain())->getIdeas())[i] << std::endl;
+	std::cout << std::endl;
+	//delete this->brain;
 }
 
 Cat::~Cat(){

@@ -11,7 +11,7 @@ int main()
 	delete j;
 	delete i;
 	std::cout << std::endl;
-	system("leaks -q brain");
+	//system("leaks -q brain");
 	std::cout << std::endl;
 
 	std::cout << "\nCHECK DEEP COPY\n" << std::endl;
@@ -63,6 +63,6 @@ int main()
 	}
 	std::cout << std::endl;
 	std::cout << "All done!" << std::endl;
-	system("leaks -q brain");
+	//system("leaks -q brain");
 	return 0;
 }

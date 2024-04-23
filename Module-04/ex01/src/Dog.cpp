@@ -1,16 +1,16 @@
 #include "../inc/Dog.hpp"
 
-Dog::Dog(){
+Dog::Dog() : Animal(){
 	std::cout << "Dog constructor called" << std::endl;
 	this->type = "Dog";
 	this->brain = new Brain();
 }
 
-Dog::Dog(const Dog &other) : Animal(other){
+Dog::Dog(const Dog &other){
 	std::cout << "Dog copy constructor called" << std::endl;
 	this->type = other.type;
 	this->brain = new Brain();
-	this->brain = other.brain;
+	*(this->brain) = Brain(*(other.brain));
 }
 
 Dog &Dog::operator=(const Dog &other){
@@ -40,6 +40,8 @@ void Dog::compare(const Dog &other){
 	std::cout << std::endl;
 	for (int i = 0; i < 100; i++)
 		std::cout << ((this->brain)->getIdeas())[i] << "\t\t\t | \t\t\t" << ((other.getBrain())->getIdeas())[i] << std::endl;
+	std::cout << std::endl;
+	//delete this->brain;
 }
 
 Dog::~Dog(){

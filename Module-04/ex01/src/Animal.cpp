@@ -5,7 +5,7 @@ Animal::Animal(){
 	this->type = "Default";
 }
 
-Animal::Animal(const Animal &other){
+Animal::Animal(Animal &other){
 	std::cout << "Animal copy constructor called" << std::endl;
 	this->type = other.type;
 }
