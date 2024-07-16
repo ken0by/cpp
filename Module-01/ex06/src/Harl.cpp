@@ -42,12 +42,16 @@ void Harl::complain(std::string level){
 		case 0:
 			break ;
 		case 1:
-			debug();
+			Harl::debug();
+			break ;
 		case 2:
-			info();
+			Harl::info();
+			break ;
 		case 3:
-			warning();
+			Harl::warning();
+			break ;
 		case 4:
-			error();
+			Harl::error();
+			break ;
 	}
 }

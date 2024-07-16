@@ -9,11 +9,11 @@ int main()
 	bob.attack();
 	club.setType("some other type of club");
 	bob.attack();
-	Weapon club = Weapon("crude spiked club");
+	Weapon club1 = Weapon("crude spiked club");
 	HumanB jim("Jim");
-	jim.setWeapon(club);
+	jim.setWeapon(club1);
 	jim.attack();
-	club.setType("some other type of club");
+	club1.setType("some other type of club");
 	jim.attack();
 	//system("leaks -q unnecessaryViolence");
 	return 0;

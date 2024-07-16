@@ -10,14 +10,14 @@ int main(int argc, char** argv) {
 	std::string s1 = argv[2];
 	std::string s2 = argv[3];
 
-	std::ifstream infile(file);
+	std::ifstream infile(file.c_str());
 	if (!infile) {
 		std::cerr << "Error abriendo el archivo: " << file << std::endl;
 		return 1;
 	}
 
 	std::string out = file + ".replace";
-	std::ofstream outfile(out);
+	std::ofstream outfile(out.c_str());
 	if (!outfile){
 		std::cerr << "Error creando el archivo de reemplazo: " << out << std::endl;
 		return 1;

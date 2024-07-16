@@ -83,7 +83,7 @@ void Phonebook::print_Phonebook(){
 		if (!isNumber(index_nbr))
 			std::cout << "Invalid entry! Please enter a valid number." << std::endl;
 		else {
-			nb = atoi(index_nbr.c_str());
+			nb = std::atoi(index_nbr.c_str());
 			if (nb > MAX_CONTACTS || contacts[nb].get_first() == ""){
 				std::cout << "Invalid input! Please enter a valid number." << std::endl;
 			}

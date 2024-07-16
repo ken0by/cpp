@@ -6,11 +6,12 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:19:52 by rofuente          #+#    #+#             */
-/*   Updated: 2024/04/02 17:46:36 by rofuente         ###   ########.fr       */
+/*   Updated: 2024/07/16 12:12:35 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstring>
 
 int main (int argc, char **argv)
 {

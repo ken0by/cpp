@@ -35,7 +35,7 @@ int main()
 	std::cout << std::endl;
 
 	std::cout << "\nARRAY\n" << std::endl;
-	const Animal *(animals[4]);
+	const Animal *animals[4];
 
 	for (int i = 0; i < 2; i++){
 		animals[i] = new Dog();

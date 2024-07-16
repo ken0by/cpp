@@ -11,7 +11,7 @@ class Zombie{
 		Zombie();
 		~Zombie();
 		Zombie(std::string name) : name(name) {}
-		void randomChump(std::string name);
+		static void randomChump(std::string name);
 		void announce(void){
 			std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 		}

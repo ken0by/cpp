@@ -4,7 +4,7 @@ Brain::Brain(){
 	std::cout << "Brain constructor called" << std::endl;
 	this->ideas = new std::string[100];
 	for (int i = 0;  i < 100; i++){
-		this->ideas[i] = "Pedro Pedro Pedro Pedro Pe...";
+		this->ideas[i] = "Pedro Pedro Pedro Pedro Pe ";
 	}
 }
 

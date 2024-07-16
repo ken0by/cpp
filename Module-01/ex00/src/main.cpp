@@ -17,9 +17,9 @@ int main(){
 	zombie2->announce();
 	zombie3 = newZombie("Summer");
 	zombie3->announce();
-	randomChump("Jerry");
-	randomChump("Beth");
-	randomChump("Pickle rick");
+	Zombie::randomChump("Jerry");
+	Zombie::randomChump("Beth");
+	Zombie::randomChump("Pickle rick");
 
 	//Free memory
 	delete zombie1;
