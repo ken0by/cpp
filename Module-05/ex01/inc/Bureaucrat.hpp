@@ -5,7 +5,8 @@
 #include <stdexcept>
 #include <string>
 
-class Bureaucrat{
+class Bureaucrat
+{
 private:
 	const std::string name;
 	int grade;
