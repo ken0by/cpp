@@ -16,12 +16,12 @@ void field_hpp(std::string path, std::string filename) {
 	file << "#include <iomanip>\n\n";
 	file << "class " << filename << "\n";
 	file << "{\n";
-	file << "    private:\n\n";
-	file << "    public:\n";
-	file << "        " << filename << "();\n";
-	file << "        " << filename << "(const " << filename << "& constrCopy);\n";
-	file << "        " << filename << "& operator=(const " << filename << "& constrCopy);\n";
-	file << "        ~" << filename << "();\n";
+	file << "	private:\n\n";
+	file << "	public:\n";
+	file << "		" << filename << "();\n";
+	file << "		" << filename << "(const " << filename << "& constrCopy);\n";
+	file << "		" << filename << "& operator=(const " << filename << "& constrCopy);\n";
+	file << "		" << filename << "();\n";
 	file << "};\n\n";
 	file << "std::ostream& operator<<(std::ostream &output, const " << filename << "& constrCopy);\n\n";
 	file << "#endif\n";

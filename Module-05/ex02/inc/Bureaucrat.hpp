@@ -6,13 +6,13 @@
 
 class Bureaucrat
 {
-    private:
+	private:
 
-    public:
-        Bureaucrat();
-        Bureaucrat(const Bureaucrat& constrCopy);
-        Bureaucrat& operator=(const Bureaucrat& constrCopy);
-        ~Bureaucrat();
+	public:
+		Bureaucrat();
+		Bureaucrat(const Bureaucrat& constrCopy);
+		Bureaucrat& operator=(const Bureaucrat& constrCopy);
+		Bureaucrat();
 };
 
 std::ostream& operator<<(std::ostream &output, const Bureaucrat& constrCopy);
