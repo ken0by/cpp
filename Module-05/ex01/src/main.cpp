@@ -86,37 +86,71 @@ void chat_test_2()
 
 void my_test()
 {
-	Bureaucrat mateo("mateo", 150);
-	std::cout << mateo << std::endl;
+	try
+	{
+		Bureaucrat mateo("mateo", 150);
+		std::cout << mateo << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+	try
+	{
+		Bureaucrat low("low", 1);
+		std::cout << low << std::endl;
+		low.incrementGrade(); // Esto lanzará una excepción
+		std::cout << low << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
 
 	std::cout << std::endl;
-
-	Bureaucrat low("low", 150);
-	std::cout << low << std::endl;
-	low.decrementGrade();
-	std::cout << low << std::endl;
-
-	std::cout << std::endl;
-
-	Bureaucrat high("high", 1);
-	std::cout << high << std::endl;
-	high.incrementGrade();
-	std::cout << high << std::endl;
-
-	std::cout << std::endl;
-
-	Bureaucrat a("other", 1150);
-	std::cout << a << std::endl;
-	Bureaucrat b("other", -100);
-	std::cout << b << std::endl;
+	try
+	{
+		Bureaucrat high("high", 150);
+		std::cout << high << std::endl;
+		high.decrementGrade(); // Esto lanzará una excepción
+		std::cout << high << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
 
 	std::cout << std::endl;
-
-	Bureaucrat *c = new Bureaucrat("pepe", 0);
-	std::cout << c << std::endl;
+	try
+	{
+		Bureaucrat a("other", 1150); // Esto lanzará una excepción
+		std::cout << a << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
+	try {
+		Bureaucrat b("other", -100);
+		std::cout << b << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+	try {
+		Bureaucrat *c = new Bureaucrat("pepe", 0);
+		std::cout << c << std::endl;
+		delete c;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
 
 	std::cout << std::endl;
-	delete c;
 }
 
 void try_test()

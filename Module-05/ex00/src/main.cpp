@@ -1,7 +1,9 @@
 #include "../inc/Bureaucrat.hpp"
 
-void chat_test(){
-	try{
+void chat_test()
+{
+	try
+	{
 		Bureaucrat bureaucrat("Alice", 2);
 		std::cout << bureaucrat << std::endl;
 
@@ -10,55 +12,73 @@ void chat_test(){
 
 		bureaucrat.incrementGrade();
 	}
-	catch (std::exception &e){
+	catch (std::exception &e)
+	{
 		std::cerr << "Exception: " << e.what() << std::endl;
 	}
 
-	try{
+	try
+	{
 		Bureaucrat bureaucrat2("Bob", 151);
 	}
-	catch (std::exception &e){
+	catch (std::exception &e)
+	{
 		std::cerr << "Exception: " << e.what() << std::endl;
 	}
 }
 
-void my_test(){
-	Bureaucrat mateo("mateo", 150);
-	std::cout << mateo << std::endl;
+void my_test()
+{
+	try
+	{
+		Bureaucrat mateo("mateo", 150);
+		std::cout << mateo << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+	try
+	{
+		Bureaucrat low("low", 1);
+		std::cout << low << std::endl;
+		low.incrementGrade(); // Esto lanzará una excepción
+		std::cout << low << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
 
 	std::cout << std::endl;
-
-	Bureaucrat low("low", 1);
-	std::cout << low << std::endl;
-	low.incrementGrade();
-	std::cout << low << std::endl;
-
-	std::cout << std::endl;
-
-	Bureaucrat high("high", 150);
-	std::cout << high << std::endl;
-	high.decrementGrade();
-	std::cout << high << std::endl;
-
-	std::cout << std::endl;
-
-	Bureaucrat a("other", 1150);
-	std::cout << a << std::endl;
-	Bureaucrat b("other", -100);
-	std::cout << b << std::endl;
+	try
+	{
+		Bureaucrat high("high", 150);
+		std::cout << high << std::endl;
+		high.decrementGrade(); // Esto lanzará una excepción
+		std::cout << high << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
 
 	std::cout << std::endl;
-
-	Bureaucrat *c = new Bureaucrat ("pepe", 0);
-	std::cout << c << std::endl;
-
-	std::cout << std::endl;
-
-	delete c;
+	try
+	{
+		Bureaucrat a("other", 1150); // Esto lanzará una excepción
+		std::cout << a << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
 }
 
-int main(){
-	// chat_test();
+int main()
+{
+	chat_test();
 	my_test();
 	return 0;
 }
