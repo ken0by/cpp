@@ -4,6 +4,9 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -12,7 +15,6 @@ private:
 	int grade;
 
 public:
-	// Excepciones personalizadas
 	class GradeTooHighException : public std::exception{
 	public:
 		const char *what() const throw();
@@ -23,18 +25,15 @@ public:
 		const char *what() const throw();
 	};
 
-	// Constructor
 	Bureaucrat(const std::string &name, int grade);
 
-	// Getters
 	const std::string &getName() const;
 	int getGrade() const;
+	void executeForm(Form &form) const;
 
-	// Métodos para modificar el grado
 	void incrementGrade();
 	void decrementGrade();
 
-	// Sobrecarga del operador de inserción <<
 	friend std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 };
 

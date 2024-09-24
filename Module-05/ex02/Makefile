@@ -1,3 +1,4 @@
+LIB	=	ar rcs
 RM	=	rm -f
 
 CC	=	g++
@@ -6,7 +7,7 @@ DEBUG	=	-g3 -fsanitize=address
 
 NAME	=	bureau
 
-SRC	=	main.cpp Bureaucrat.cpp
+SRC	=	main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 SRC_DIR	=	src/
 
 OBJ_DIR	=	./obj/
@@ -33,12 +34,11 @@ $(OBJ_DIR)%.o:$(SRC_DIR)%.cpp
 
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo "
-$(G)Program compiled!$(DEF_COLOR)-> $@\n"
+	@echo "\n$(G)Program compiled!$(DEF_COLOR)-> $@\n"
 
 clean:
 	@$(RM) $(OBJ)
-	@$(RM) $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 	@echo "$(R)All .o files removed$(DEF_COLOR)\n"
 
 fclean: clean

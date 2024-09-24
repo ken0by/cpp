@@ -7,7 +7,7 @@ DEBUG	=	-g3 -fsanitize=address
 
 NAME	=	bureau
 
-SRC	=	main.cpp Bureaucrat.cpp
+SRC	=	main.cpp Bureaucrat.cpp Form.cpp
 SRC_DIR	=	src/
 
 OBJ_DIR	=	./obj/

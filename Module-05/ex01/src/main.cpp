@@ -1,235 +1,143 @@
 #include "../inc/Bureaucrat.hpp"
+#include "../inc/Form.hpp"
 
 void chat_test()
 {
 	try
 	{
-		Bureaucrat bureaucrat("Alice", 2);
-		std::cout << bureaucrat << std::endl;
+		Bureaucrat alice("Alice", 2);
+		Form formA("Form A", 1, 10);
 
-		bureaucrat.incrementGrade();
-		std::cout << bureaucrat << std::endl;
+		std::cout << alice << std::endl;
+		std::cout << formA << std::endl;
 
-		bureaucrat.incrementGrade();
+		alice.executeForm(formA);
+		std::cout << formA << std::endl;
 	}
-	catch (std::exception &e)
+	catch (const std::exception &e)
 	{
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-
-	try
-	{
-		Bureaucrat bureaucrat2("Bob", 151);
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception: " << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 }
 
 void chat_test_2()
 {
-	// Caso 1: Crear un burócrata con un rango válido y luego intentar incrementar el rango más allá del límite
+	// Prueba 1: Bureaucrat con un rango suficiente para firmar el formulario
 	try
 	{
-		Bureaucrat bureaucrat("Alice", 2);
-		std::cout << bureaucrat << std::endl;
+		Bureaucrat alice("Alice", 2); // Grado 2
+		Form formA("Form A", 3, 10);  // Grado necesario para firmar: 3, ejecutar: 10
 
-		bureaucrat.incrementGrade();
-		std::cout << bureaucrat << std::endl;
+		std::cout << alice << std::endl;
+		std::cout << formA << std::endl;
 
-		// Este incremento debería lanzar una excepción, ya que el rango máximo es 1
-		bureaucrat.incrementGrade();
+		alice.executeForm(formA); // Alice puede firmar porque tiene grado 2 (mejor que 3)
+		std::cout << formA << std::endl;
 	}
-	catch (std::exception &e)
+	catch (const std::exception &e)
 	{
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-
-	// Caso 2: Crear un burócrata con un rango inválido (demasiado bajo)
-	try
-	{
-		Bureaucrat bureaucrat2("Bob", 151); // Debería lanzar una excepción
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception: " << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
-	// Caso 3: Crear un burócrata con un rango válido y luego intentar disminuir el rango por debajo del límite
+	std::cout << "\n";
+
+	// Prueba 2: Bureaucrat con un rango insuficiente para firmar
 	try
 	{
-		Bureaucrat bureaucrat3("Charlie", 149);
-		std::cout << bureaucrat3 << std::endl;
+		Bureaucrat bob("Bob", 5);	 // Grado 5
+		Form formB("Form B", 2, 10); // Grado necesario para firmar: 2, ejecutar: 10
 
-		bureaucrat3.decrementGrade(); // Decrementa a 150, aún válido
-		std::cout << bureaucrat3 << std::endl;
+		std::cout << bob << std::endl;
+		std::cout << formB << std::endl;
 
-		// Este decremento debería lanzar una excepción, ya que el rango mínimo es 150
-		bureaucrat3.decrementGrade();
+		bob.executeForm(formB); // Bob no puede firmar porque su grado es 5 (se requiere 2)
+		std::cout << formB << std::endl;
 	}
-	catch (std::exception &e)
+	catch (const std::exception &e)
 	{
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-
-	// Caso 4: Crear un burócrata con un rango inválido (demasiado alto)
-	try
-	{
-		Bureaucrat bureaucrat4("Dave", 0); // Debería lanzar una excepción
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-}
-
-void my_test()
-{
-	try
-	{
-		Bureaucrat mateo("mateo", 150);
-		std::cout << mateo << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	try
-	{
-		Bureaucrat low("low", 1);
-		std::cout << low << std::endl;
-		low.incrementGrade(); // Esto lanzará una excepción
-		std::cout << low << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception: " << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << std::endl;
+	std::cout << "\n";
+
+	// Prueba 3: Intentar firmar un formulario ya firmado
 	try
 	{
-		Bureaucrat high("high", 150);
-		std::cout << high << std::endl;
-		high.decrementGrade(); // Esto lanzará una excepción
-		std::cout << high << std::endl;
+		Bureaucrat charlie("Charlie", 1); // Grado 1 (máximo)
+		Form formC("Form C", 5, 20);	  // Grado necesario para firmar: 5, ejecutar: 20
+
+		std::cout << charlie << std::endl;
+		std::cout << formC << std::endl;
+
+		charlie.executeForm(formC); // Charlie puede firmar (grado 1 es suficiente)
+		std::cout << formC << std::endl;
+
+		// Intentamos firmar de nuevo el mismo formulario
+		charlie.executeForm(formC); // No debería causar problemas, pero no tiene sentido firmarlo dos veces
+		std::cout << formC << std::endl;
 	}
-	catch (std::exception &e)
+	catch (const std::exception &e)
 	{
-		std::cerr << "Exception: " << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << std::endl;
+	std::cout << "\n";
+
+	// Prueba 4: Formulario con grados fuera de rango
 	try
 	{
-		Bureaucrat a("other", 1150); // Esto lanzará una excepción
-		std::cout << a << std::endl;
+		Bureaucrat dave("Dave", 10);
+		// Formulario con grados inválidos (mayor que 150 o menor que 1)
+		Form formD("Form D", 0, 151); // Esto lanzará una excepción inmediatamente
 	}
-	catch (std::exception &e)
+	catch (const std::exception &e)
 	{
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-	try {
-		Bureaucrat b("other", -100);
-		std::cout << b << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	try {
-		Bureaucrat *c = new Bureaucrat("pepe", 0);
-		std::cout << c << std::endl;
-		delete c;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception: " << e.what() << std::endl;
+		std::cerr << "Exception while creating form: " << e.what() << std::endl;
 	}
 
-	std::cout << std::endl;
-}
+	std::cout << "\n";
 
-void try_test()
-{
+	// Prueba 5: Grado bajo que intenta firmar un formulario de alta exigencia
 	try
 	{
-		Bureaucrat mateo("mateo", 150);
-		std::cout << mateo << std::endl;
+		Bureaucrat eve("Eve", 150); // Grado más bajo (150)
+		Form formE("Form E", 1, 1); // Grado necesario para firmar: 1, ejecutar: 1 (más alto)
+
+		std::cout << eve << std::endl;
+		std::cout << formE << std::endl;
+
+		eve.executeForm(formE); // Eve no puede firmar, su rango es demasiado bajo
+		std::cout << formE << std::endl;
 	}
-	catch (std::exception &e)
+	catch (const std::exception &e)
 	{
-		std::cerr << "Exception: " << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
-	std::cout << std::endl;
+
+	std::cout << "\n";
+
+	// Prueba 6: Creación de un Bureaucrat con rango inválido
 	try
 	{
-		Bureaucrat low("low", 150);
-		std::cout << low << std::endl;
-		low.decrementGrade();
-		std::cout << low << std::endl;
+		// Bureaucrat con rango inválido (menor que 1)
+		Bureaucrat invalidBureaucrat("Invalid Bureaucrat", 0); // Esto lanzará una excepción
 	}
-	catch (std::exception &e)
+	catch (const std::exception &e)
 	{
-		std::cerr << "Exception: " << e.what() << std::endl;
+		std::cerr << "Exception while creating bureaucrat: " << e.what() << std::endl;
 	}
-	std::cout << std::endl;
-	try
-	{
-		Bureaucrat high("high", 1);
-		std::cout << high << std::endl;
-		high.incrementGrade();
-		std::cout << high << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	try
-	{
-		Bureaucrat a("other", 1150);
-		std::cout << a << std::endl;
-		Bureaucrat b("other", -100);
-		std::cout << b << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	try
-	{
-		Bureaucrat *c = new Bureaucrat("pepe", 0);
-		std::cout << c << std::endl;
-		delete c;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-	std::cout << std::endl;
 }
 
 int main()
 {
-	// std::cout << "CHAT_TEST" << std::endl;
-	// chat_test();
-	// std::cout << std::endl;
-	// std::cout << std::endl;
+	std::cout << "CHAT_TEST" << std::endl;
+	chat_test();
+	std::cout << std::endl;
+	std::cout << std::endl;
+
 	std::cout << "CHAT_TEST_2" << std::endl;
 	chat_test_2();
 	std::cout << std::endl;
 	std::cout << std::endl;
-	// std::cout << "MY_TEST" << std::endl;
-	// my_test();
-	// std::cout << std::endl;
-	// std::cout << std::endl;
-	// std::cout << "TRY_TEST" << std::endl;
-	// try_test();
-	// std::cout << std::endl;
 	return 0;
 }
