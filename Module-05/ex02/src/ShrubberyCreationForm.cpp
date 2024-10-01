@@ -40,7 +40,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	if (!file)
 	{
 		std::cerr << "Error creating file." << std::endl;
-		return;
+		//return;
 	}
 
 	file << "         ,@@@@@@@," << std::endl;

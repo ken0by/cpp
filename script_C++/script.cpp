@@ -104,6 +104,8 @@ void create_makefile(std::string path, std::string name, std::string filename) {
 	file << "	@echo \"$(R)OBJ directory removed$(DEF_COLOR)\\n\"\n\n";
 	file << "re: fclean all\n\n";
 	file << ".PHONY: all clean fclean re\n";
+
+	file.close();
 }
 
 int main(int argc, char *argv[]) {

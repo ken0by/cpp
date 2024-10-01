@@ -22,22 +22,22 @@ void chat_test()
 		std::cout << "SIGNING FORMS..." << std::endl;
 		std::cout << std::endl;
 
-		bureaucrat2.executeForm(shrubberyForm); // Bob firma
-		bureaucrat2.executeForm(robotomyForm);	 // Bob firma
-		bureaucrat3.executeForm(pardonForm);	 // Charlie firma
+		bureaucrat2.signForm(shrubberyForm); // Bob firma
+		bureaucrat2.signForm(robotomyForm);	 // Bob firma
+		bureaucrat3.signForm(pardonForm);	 // Charlie firma
 
 		// Intentar ejecutar los formularios
 		std::cout << std::endl;
 		std::cout << "EXECUTING FORMS..." << std::endl;
 		std::cout << std::endl;
-
-		bureaucrat1.executeForm(shrubberyForm); // Fallará, no tiene permiso
+		bureaucrat1.signForm(shrubberyForm); // Fallará, no tiene permiso
 		bureaucrat2.executeForm(robotomyForm);	// Ejecuta y muestra el resultado
 		bureaucrat3.executeForm(pardonForm);	// Ejecuta y muestra el resultado
 
 		// Firmar el formulario de arbustos antes de ejecutarlo
-		bureaucrat1.executeForm(shrubberyForm);	// Ahora debería funcionar
+		bureaucrat1.signForm(shrubberyForm);	// Ahora debería funcionar
 		bureaucrat1.executeForm(shrubberyForm); // Ahora debería ejecutarse
+		std::cout << "\nDESTRUCTOR\n" << std::endl;
 	}
 	catch (const std::exception &e)
 	{
@@ -55,10 +55,31 @@ void testShrubberyCreationForm()
 
 	ShrubberyCreationForm shrubberyForm("Home");
 
-	// Intentar firmar y ejecutar
-	bureaucrat2.executeForm(shrubberyForm);	// Éxito en firma
-	bureaucrat1.executeForm(shrubberyForm); // Fallo en ejecución (no firmado)
-	bureaucrat3.executeForm(shrubberyForm); // Éxito en ejecución
+	// Intentar firmar el formulario
+	try {
+		bureaucrat2.signForm(shrubberyForm); // Éxito en firma
+	}
+	catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	// Intentar ejecutar el formulario con Alice (no tiene permiso)
+	try {
+		bureaucrat1.executeForm(shrubberyForm); // Fallará porque Alice no tiene suficiente rango para ejecutarlo
+	}
+	catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	// Intentar ejecutar el formulario con Charlie (tiene permiso para ejecutarlo)
+	try {
+		bureaucrat3.executeForm(shrubberyForm); // Éxito en ejecución
+		std::cout << "\nDESTRUCTOR\n" << std::endl;
+	}
+	catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+		std::cout << "\nDESTRUCTOR\n" << std::endl;
+	}
 }
 
 void testRobotomyRequestForm()
@@ -71,9 +92,20 @@ void testRobotomyRequestForm()
 
 	RobotomyRequestForm robotomyForm("Charlie");
 
-	// Firmar y ejecutar
-	bureaucrat1.executeForm(robotomyForm);	   // Éxito en firma
-	bureaucrat2.executeForm(robotomyForm); // Éxito en ejecución
+	// Intentar firmar y ejecutar
+	try {
+		bureaucrat1.signForm(robotomyForm);    // Éxito en firma
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	try {
+		bureaucrat2.executeForm(robotomyForm); // Éxito en ejecución
+		std::cout << "\nDESTRUCTOR\n" << std::endl;
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+		std::cout << "\nDESTRUCTOR\n" << std::endl;
+	}
 }
 
 void testPresidentialPardonForm()
@@ -86,9 +118,20 @@ void testPresidentialPardonForm()
 
 	PresidentialPardonForm pardonForm("Charlie");
 
-	// Firmar y ejecutar
-	bureaucrat1.executeForm(pardonForm);	 // Éxito en firma
-	bureaucrat2.executeForm(pardonForm); // Éxito en ejecución
+	// Intentar firmar y ejecutar
+	try {
+		bureaucrat1.signForm(pardonForm);    // Éxito en firma
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	try {
+		bureaucrat2.executeForm(pardonForm); // Éxito en ejecución
+		std::cout << "\nDESTRUCTOR\n" << std::endl;
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+		std::cout << "\nDESTRUCTOR\n" << std::endl;
+	}
 }
 
 void testMultipleFormsAndBureaucrats()
@@ -105,14 +148,43 @@ void testMultipleFormsAndBureaucrats()
 	PresidentialPardonForm pardonForm("Frank");
 
 	// Intentar firmar
-	bureaucrat2.executeForm(shrubberyForm);	// Éxito
-	bureaucrat2.executeForm(shrubberyForm); // Éxito
+	try {
+		bureaucrat2.signForm(shrubberyForm);    // Bob firma Shrubbery
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 
-	bureaucrat3.executeForm(robotomyForm);	   // Éxito
-	bureaucrat3.executeForm(robotomyForm); // Éxito
+	try {
+		bureaucrat3.executeForm(shrubberyForm); // Charlie ejecuta Shrubbery
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 
-	bureaucrat3.executeForm(pardonForm);	 // Éxito
-	bureaucrat3.executeForm(pardonForm); // Éxito
+	try {
+		bureaucrat3.signForm(robotomyForm);     // Charlie firma Robotomy
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	try {
+		bureaucrat3.executeForm(robotomyForm);  // Charlie ejecuta Robotomy
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	try {
+		bureaucrat3.signForm(pardonForm);       // Charlie firma Presidential Pardon
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	try {
+		bureaucrat3.executeForm(pardonForm);    // Charlie ejecuta Presidential Pardon
+		std::cout << "\nDESTRUCTOR\n" << std::endl;
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+		std::cout << "\nDESTRUCTOR\n" << std::endl;
+	}
 }
 
 void chat_test_2()
@@ -139,11 +211,11 @@ int main()
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	// std::cout << "CHAT_TEST_2" << std::endl;
-	// std::cout << "===========" << std::endl;
-	// std::cout << std::endl;
-	// chat_test_2();
-	// std::cout << std::endl;
-	// std::cout << std::endl;
+	std::cout << "CHAT_TEST_2" << std::endl;
+	std::cout << "===========" << std::endl;
+	std::cout << std::endl;
+	chat_test_2();
+	std::cout << std::endl;
+	std::cout << std::endl;
 	return 0;
 }

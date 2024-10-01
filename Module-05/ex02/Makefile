@@ -1,5 +1,5 @@
 LIB	=	ar rcs
-RM	=	rm -f
+RM	=	rm -rf
 
 CC	=	g++
 CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -I ./inc
@@ -38,12 +38,12 @@ $(NAME): $(OBJ)
 
 clean:
 	@$(RM) $(OBJ)
-	@rm -rf $(OBJ_DIR)
+	@$(RM) *_shrubbery
 	@echo "$(R)All .o files removed$(DEF_COLOR)\n"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@rm -rf $(OBJ_DIR)
+	@$(RM) $(OBJ_DIR)
 	@echo "$(R)OBJ directory removed$(DEF_COLOR)\n"
 
 re: fclean all
