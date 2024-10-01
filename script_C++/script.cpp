@@ -19,11 +19,11 @@ void field_hpp(std::string path, std::string filename) {
 	file << "	private:\n\n";
 	file << "	public:\n";
 	file << "		" << filename << "();\n";
-	file << "		" << filename << "(const " << filename << "& constrCopy);\n";
-	file << "		" << filename << "& operator=(const " << filename << "& constrCopy);\n";
+	file << "		" << filename << "(const " << filename << "& other);\n";
+	file << "		" << filename << "& operator=(const " << filename << "& other);\n";
 	file << "		~" << filename << "();\n";
 	file << "};\n\n";
-	file << "std::ostream& operator<<(std::ostream &output, const " << filename << "& constrCopy);\n\n";
+	file << "std::ostream& operator<<(std::ostream &output, const " << filename << "& other);\n\n";
 	file << "#endif\n";
 	file.close();
 }
@@ -40,9 +40,9 @@ void field_cpp(std::string path, std::string filename) {
 	file << filename << "::" << filename << "()\n"
 		 << "{\n"
 		 << "}\n\n";																   // Constructor parameter
-	file << filename << "::" << filename << "(const " << filename << "& constrCopy)\n{\n\n}\n\n";  // Copy constructor
-	file << filename << "& " << filename << "::operator=(const " << filename << "& constrCopy)\n"; // Assigned operator
-	file << "{\n    if (this != &constrCopy)\n    {\n\n    }\n\n    return (*this);\n}\n\n";
+	file << filename << "::" << filename << "(const " << filename << "& other)\n{\n\n}\n\n";  // Copy constructor
+	file << filename << "& " << filename << "::operator=(const " << filename << "& other)\n"; // Assigned operator
+	file << "{\n    if (this != &other)\n    {\n\n    }\n\n    return (*this);\n}\n\n";
 	file << filename << "::" << "~" << filename << "()\n"
 		 << "{\n"
 		 << "}\n\n"; // Destructor
@@ -93,7 +93,7 @@ void create_makefile(std::string path, std::string name, std::string filename) {
 	file << "	@$(CC) $(CFLAGS) -c $< -o $@\n\n";
 	file << "$(NAME): $(OBJ)\n";
 	file << "	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)\n";
-	file << "	@echo \"\n$(G)Program compiled!$(DEF_COLOR)-> $@\\n\"\n\n";
+	file << "	@echo \"\\n$(G)Program compiled!$(DEF_COLOR)-> $@\\n\"\n\n";
 	file << "clean:\n";
 	file << "	@$(RM) $(OBJ)\n";
 	file << "	@$(RM) $(OBJ_DIR)\n";

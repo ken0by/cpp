@@ -4,9 +4,9 @@ CC	=	g++
 CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -I ./inc
 DEBUG	=	-g3 -fsanitize=address
 
-NAME	=	convert
+NAME	=	serializer
 
-SRC	=	main.cpp ScalarConverter.cpp
+SRC	=	main.cpp Serializer.cpp
 SRC_DIR	=	src/
 
 OBJ_DIR	=	./obj/
