@@ -21,7 +21,7 @@ void field_hpp(std::string path, std::string filename) {
 	file << "		" << filename << "();\n";
 	file << "		" << filename << "(const " << filename << "& constrCopy);\n";
 	file << "		" << filename << "& operator=(const " << filename << "& constrCopy);\n";
-	file << "		" << filename << "();\n";
+	file << "		~" << filename << "();\n";
 	file << "};\n\n";
 	file << "std::ostream& operator<<(std::ostream &output, const " << filename << "& constrCopy);\n\n";
 	file << "#endif\n";
@@ -33,7 +33,7 @@ void field_cpp(std::string path, std::string filename) {
 	if (!file) {
 		std::cerr << "Error creating file: " << path << std::endl;
 	}
-	file << "#include \"../include/" << filename << ".hpp\"\n\n";
+	file << "#include \"../inc/" << filename << ".hpp\"\n\n";
 	file << filename << "::" << filename << "()\n"
 		 << "{\n"
 		 << "}\n\n"; // Constructor
@@ -65,7 +65,7 @@ void create_makefile(std::string path, std::string name, std::string filename) {
 	if (!file) {
 		std::cerr << "Error creating file: " << path << std::endl;
 	}
-	file << "RM	=	rm -f\n\n";
+	file << "RM	=	rm -rf\n\n";
 	file << "CC	=	g++\n";
 	file << "CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -I ./inc\n";
 	file << "DEBUG	=	-g3 -fsanitize=address\n\n";
@@ -100,7 +100,7 @@ void create_makefile(std::string path, std::string name, std::string filename) {
 	file << "	@echo \"$(R)All .o files removed$(DEF_COLOR)\\n\"\n\n";
 	file << "fclean: clean\n";
 	file << "	@$(RM) $(NAME)\n";
-	file << "	@rm -rf $(OBJ_DIR)\n";
+	file << "	@$(RM) $(OBJ_DIR)\n";
 	file << "	@echo \"$(R)OBJ directory removed$(DEF_COLOR)\\n\"\n\n";
 	file << "re: fclean all\n\n";
 	file << ".PHONY: all clean fclean re\n";
