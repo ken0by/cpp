@@ -1,29 +1,17 @@
 #include "../inc/Serializer.hpp"
 
-Serializer::Serializer()
-{
+Serializer::Serializer() {
+	std::cout << "Serializer default constructor called!" << std::endl;
 }
 
-Serializer::Serializer()
-{
+Serializer::~Serializer() {
+	std::cout << "Serializer destructor called!" << std::endl;
 }
 
-Serializer::Serializer(const Serializer& other)
-{
-
+uintptr_t Serializer::serialize(Data* ptr) {
+	return reinterpret_cast<uintptr_t>(ptr);
 }
 
-Serializer& Serializer::operator=(const Serializer& other)
-{
-    if (this != &other)
-    {
-
-    }
-
-    return (*this);
+Data* Serializer::deserialize(uintptr_t raw) {
+	return reinterpret_cast<Data*>(raw);
 }
-
-Serializer::~Serializer()
-{
-}
-

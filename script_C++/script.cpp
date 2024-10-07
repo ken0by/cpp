@@ -34,18 +34,11 @@ void field_cpp(std::string path, std::string filename) {
 		std::cerr << "Error creating file: " << path << std::endl;
 	}
 	file << "#include \"../inc/" << filename << ".hpp\"\n\n";
-	file << filename << "::" << filename << "()\n"
-		 << "{\n"
-		 << "}\n\n"; // Constructor
-	file << filename << "::" << filename << "()\n"
-		 << "{\n"
-		 << "}\n\n";																   // Constructor parameter
-	file << filename << "::" << filename << "(const " << filename << "& other)\n{\n\n}\n\n";  // Copy constructor
-	file << filename << "& " << filename << "::operator=(const " << filename << "& other)\n"; // Assigned operator
-	file << "{\n    if (this != &other)\n    {\n\n    }\n\n    return (*this);\n}\n\n";
-	file << filename << "::" << "~" << filename << "()\n"
-		 << "{\n"
-		 << "}\n\n"; // Destructor
+	file << filename << "::" << filename << "() {\n\tstd::cout << \"" << filename << " default constructor called!\" << std::endl;\n" << "}\n\n"; // Constructor
+	file << filename << "::" << filename << "(const " << filename << "& other) {\n\tstd::cout << \"" << filename << " copy constructor called!\" << std::endl;\n}\n\n";  // Copy constructor
+	file << filename << "& " << filename << "::operator=(const " << filename << "& other){"; // Assigned operator
+	file << "\tif (this != &other) {\n\n\t}\n\n\treturn (*this);\n}\n\n";
+	file << filename << "::" << "~" << filename << "() {\n\tstd::cout << \"" << filename << " destructor called!\" << std::endl;\n" << "}\n\n"; // Destructor
 	file.close();
 }
 
