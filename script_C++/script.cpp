@@ -48,7 +48,14 @@ void create_main(std::string path, std::string filename) {
 		std::cerr << "Error creating file: " << path << std::endl;
 	}
 	file << "#include \"../inc/" + filename + ".hpp\"\n\n";
-	file << "int main() {\n	std::cout << \"Hello, " + filename + "!\" << std::endl;\n";
+	file << "void simple_test() {\n\n}\n\n";
+	file << "void big_test() {\n\n}\n";
+	file << "int main() {\n	std::cout << \"-----SIMPLE TEST-----\\n\" << std::endl;\n";
+	file << "	simple_test();\n";
+	file << "	std::cout << \"\\n\" << std::endl;\n";
+	file << "	std::cout << \"-----BIG TEST-----\\n\" << std::endl;\n";
+	file << "	big_test();\n";
+	file << "	std::cout << \"\\n\" << std::endl;\n";
 	file << "	return 0;\n}\n";
 	file.close();
 }
