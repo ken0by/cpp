@@ -1,70 +1,62 @@
 #include "../inc/PmergeMe.hpp"
 
-void printVector(const std::vector<int> &vec)
-{
-	for (std::size_t i = 0; i < vec.size(); ++i)
-	{
-		std::cout << vec[i];
-		if (i != vec.size() - 1)
-		{
-			std::cout << " ";
+bool checkDuplicate(std::vector<int>& vec) {
+	std::set<int> nb;
+
+	for (size_t i = 0; i < vec.size(); ++i) {
+		// Intentamos insertar el numero en el set
+		if (!nb.insert(vec[i]).second){
+			// Si el numero esta repetido muestra el mensaje de error
+			std::cerr << "Error: Number " << vec[i] << " is duplicate" << std::endl;
+			return true;
 		}
 	}
-	std::cout << std::endl;
+	return false;
 }
 
-void printList(const std::list<int> &lst)
-{
-	std::list<int>::const_iterator it;
-	for (it = lst.begin(); it != lst.end(); ++it)
-		std::cout << *it << " ";
-	std::cout << std::endl;
-}
-
-bool checkArg(std::string input)
-{
-	if (input.length() == 0)
-		return false;
-	std::istringstream iss(input);
-	std::string token;
-	while (iss >> token)
-	{
-		if (std::numeric_limits<int>::min() > std::atoi(token.c_str()))
-			return false;
-		else if (std::numeric_limits<int>::max() < std::atoi(token.c_str()))
-			return false;
-		if (std::atoi(token.c_str()) < 0)
+bool checkArg(const std::string& arg) {
+	for (size_t i = 0; i < arg.length(); ++i) {
+		if (!isdigit(arg[i]))
 			return false;
 	}
 	return true;
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	if (argc != 2)
-	{
-		std::cerr << "Invalid number of arguments.\nUsage: " << argv[0] << " \"expression\"" << std::endl;
+	PmergeMe sort;
+	std::vector<int> vec;
+	std::deque<int> deq;
+
+	if (argc < 2) {
+		std::cerr << "Error: No input provided" << std::endl;
 		return 1;
 	}
-	if (!checkArg(argv[1]))
-	{
-		std::cerr << "Error" << std::endl;
-		return 2;
+
+	for (int i = 1; i < argc; ++i) {
+		if (!checkArg(argv[i])) {
+			std::cerr << "Error: Invalid argument: " << argv[i] << std::endl;
+			return 1;
+		}
+		int num = std::atoi(argv[i]);
+		vec.push_back(num);
+		deq.push_back(num);
 	}
-	std::cout << "Before: " << argv[1] << std::endl;
-	clock_t start = clock();
-	PmergeMe mergeSort;
-	double xElements = mergeSort.numsToContainers(argv[1]);
-	clock_t end = clock();
-	double elapsedTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
-	double sortTimeVec = mergeSort.sortVec();
-	double sortTimeList = mergeSort.sortList();
-	sortTimeVec += elapsedTime;
-	sortTimeList += elapsedTime;
-	std::cout << "After:  ";
-	printVector(mergeSort._myVec);
-	std::cout << "After:  ";
-	printList(mergeSort._myList);
-	std::cout << "Time to process a range of " << xElements << " elements with std::vector : " << sortTimeVec << "us" << std::endl;
-	std::cout << "Time to process a range of " << xElements << " elements with std::list : " << sortTimeList << "us" << std::endl;
+
+	if (checkDuplicate(vec))
+		return 1;
+
+	// Mostrar secuencia original
+	sort.printVec("Before: ", vec);
+
+	// Medir y mostrar el tiempo de ejecución del vector
+	double timeVec = sort.timeExeVec(vec);
+	sort.printVec("After: ", vec);
+	std::cout << "Time to process a range of " << vec.size() << " elements with std::[..] : " << timeVec << " us" << std::endl;
+
+	// Medir y mostrar el tiempo de ejecución del deque
+	double timeDeq = sort.timeExeDeque(deq);
+	std::cout << "Time to process a range of " << deq.size() << " elements with std::[..] : " << timeDeq << " us" << std::endl;
+
+	return 0;
 }
