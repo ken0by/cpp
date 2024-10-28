@@ -21,7 +21,7 @@ Fixed::Fixed(){
 
 Fixed::Fixed(const int i){
 	std::cout << "Int constractor called" << std::endl;
-	this->nb = i << this->bits;
+	this->nb = i;
 }
 
 Fixed::Fixed(const float x){
