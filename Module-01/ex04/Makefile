@@ -44,6 +44,7 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 	@rm -rf $(OBJ_DIR)
+	@rm *.replace
 	@echo "$(R)OBJ directory removed$(DEF_COLOR)\n"
 
 re: fclean all

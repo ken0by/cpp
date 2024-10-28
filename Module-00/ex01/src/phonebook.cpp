@@ -40,12 +40,12 @@ void Phonebook::add(){
 		contacts[nb_contact] = new_contact;
 		nb_contact++;
 	} else {
+		if (last_contact == MAX_CONTACTS)
+			last_contact = 0;
 		new_contact.contact(last_contact, name, last_name, nickname, phone, dark);
 		contacts[last_contact] = new_contact;
 		if (last_contact < MAX_CONTACTS)
 			last_contact += 1;
-		else
-			last_contact = 0;
 	}
 	std::cout << "New contact added!" << std::endl;
 }
