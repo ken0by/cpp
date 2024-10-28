@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:19:52 by rofuente          #+#    #+#             */
-/*   Updated: 2024/07/16 12:12:35 by rofuente         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:09:47 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main (int argc, char **argv)
 				argv[i][j] = toupper(argv[i][j]);
 			std::cout << argv[i];
 		}
+		std::cout << std::endl;
 	}
 	else
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
