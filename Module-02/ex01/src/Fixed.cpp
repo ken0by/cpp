@@ -21,12 +21,12 @@ Fixed::Fixed(){
 
 Fixed::Fixed(const int i){
 	std::cout << "Int constractor called" << std::endl;
-	this->nb = i;
+	this->nb = i << this->bits;
 }
 
 Fixed::Fixed(const float x){
 	std::cout << "Float constractor called" << std::endl;
-	this->nb = roundf(x * ft_power(2, this->bits));
+	this->nb = static_cast<int>(roundf(x * (1 << this->bits)));
 }
 
 Fixed::Fixed(const Fixed& other){
@@ -53,7 +53,7 @@ int Fixed::toInt() const{
 }
 
 float Fixed::toFloat() const{
-	return (this->nb * ft_power(2, this->bits));
+	return static_cast<float>(this->nb) / (1 << this->bits);
 }
 
 Fixed::~Fixed(){

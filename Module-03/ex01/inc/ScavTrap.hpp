@@ -4,7 +4,7 @@
 # include "ClapTrap.hpp"
 
 class ScavTrap : public ClapTrap{
-	private:
+	protected:
 		std::string name;
 		int health;
 		int energy;

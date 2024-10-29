@@ -35,10 +35,10 @@ void Dog::compare(const Dog &other){
 	std::cout << std::endl;
 	std::cout << "COMPARE IDEAS:" << std::endl;
 	std::cout << "This ideas \t\t\t\t\t | \t\t\t Other ideas\n";
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 20; i++)
 		std::cout << "-";
 	std::cout << std::endl;
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 20; i++)
 		std::cout << ((this->brain)->getIdeas())[i] << "\t\t\t | \t\t\t" << ((other.getBrain())->getIdeas())[i] << std::endl;
 	std::cout << std::endl;
 	//delete this->brain;
