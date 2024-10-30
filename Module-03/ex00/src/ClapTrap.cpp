@@ -1,10 +1,10 @@
 #include "../inc/ClapTrap.hpp"
 
-ClapTrap::ClapTrap(): name("Default"), health(10), energy(10), attack_points(0){
+ClapTrap::ClapTrap(): name("Default"), hit(10), energy(10), attack_points(0){
 	std::cout << "ClapTrap Default constractor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name): name(name), health(10), energy(10), attack_points(0){
+ClapTrap::ClapTrap(std::string name): name(name), hit(10), energy(10), attack_points(0){
 	std::cout << "ClapTrap " << name << " constractor called" << std::endl;
 }
 
@@ -18,7 +18,7 @@ std::string ClapTrap::getName(void) const{
 }
 
 int ClapTrap::getHealth(void) const {
-	return this->health;
+	return this->hit;
 }
 
 int ClapTrap::getEnergy(void) const {
@@ -32,14 +32,14 @@ int ClapTrap::getAttackPoints(void) const {
 ClapTrap &ClapTrap::operator=(const ClapTrap &other){
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->name = other.getName();
-	this->health = other.getHealth();
+	this->hit = other.getHealth();
 	this->energy = other.getEnergy();
 	this->attack_points = other.getAttackPoints();
 	return *this;
 }
 
 void ClapTrap::attack(const std::string& target){
-	if (this->health <= 0){
+	if (this->hit <= 0){
 		std::cout << this->name << " can't attack " << target << ", is dead!" << std::endl;
 		return ;
 	}
@@ -54,17 +54,17 @@ void ClapTrap::attack(const std::string& target){
 }
 
 void ClapTrap::takeDamage(unsigned int amount){
-	if (this->health <= 0){
+	if (this->hit <= 0){
 		std::cout << this->name << " is dead!" << std::endl;
 		return ;
 	}
 
 	std::cout << "ClapTrap " << this->name << " take " << amount << " points of damge!" << std::endl;
-	this->health -= amount;
+	this->hit -= amount;
 }
 
 void ClapTrap::beRepaired(unsigned int amount){
-	if (this->health <= 0){
+	if (this->hit <= 0){
 		std::cout << this->name << " can't repaired, is dead!" << std::endl;
 		return ;
 	}
@@ -75,7 +75,7 @@ void ClapTrap::beRepaired(unsigned int amount){
 	}
 
 	std::cout << "ClapTrap " << this->name << " repeared " << amount << " points of health!" << std::endl;
-	this->health += amount;
+	this->hit += amount;
 }
 
 ClapTrap::~ClapTrap(){
